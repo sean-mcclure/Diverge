@@ -54,6 +54,7 @@ az.add_slider("my_layout_cells", 2, {
 az.style_slider("my_slider", 1, {
     "width" : "70%",
     "outline" : 0,
+    "color" : "black",
     "-webkit-user-select:": "none",
 	"-moz-user-select": "none",
 	"-ms-user-select": "none",
@@ -64,6 +65,12 @@ az.style_slider("my_slider", 1, {
 az.add_html("my_layout_cells", 3, {
     "html" : "<div id='hold_plot'></div>"
 })
+
+setTimeout(function() {
+    az.trigger_event("my_slider", 1, {
+        "event" : "change"
+    })
+}, 1000)
 
 az.add_event("my_slider", 1, {
     "type" : "as_change",
