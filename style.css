@@ -1,0 +1,83 @@
+html,
+body {
+	overflow-x: hidden !important;
+}
+
+mjx-container {
+	outline: 0;
+}
+
+.MathJax {
+	font-size: 20px !important;
+	padding: 20px;
+}
+
+input[type=range] {
+	-webkit-appearance: none;
+	-webkit-touch-callout: none;
+	/* iOS Safari */
+	-webkit-user-select: none;
+	/* Safari */
+	-khtml-user-select: none;
+	/* Konqueror HTML */
+	-moz-user-select: none;
+	/* Firefox */
+	-ms-user-select: none;
+	/* Internet Explorer/Edge */
+	user-select: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+	height: 20px;
+	background: #227093;
+	border: none;
+	border-radius: 3px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	border: none;
+	height: 30px;
+	width: 30px;
+	border-radius: 50%;
+	background: goldenrod;
+	margin-top: -6px;
+	box-shadow: 2px 2px 2px black;
+}
+
+input[type=range]:focus {
+	outline: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+	background: #227093;
+}
+
+.show_value {
+	margin-left: -30px;
+}
+
+svg {
+	border: 2px solid black;
+    background: transparent;
+}
+
+@media only screen and (max-width: 600px) {
+	input[type=range]::-webkit-slider-runnable-track {
+		height: 30px !important;
+	}
+	input[type=range]::-webkit-slider-thumb {
+		width: 40px !important;
+		height: 40px !important;
+	}
+	.show_value {
+		margin-left: 4px !important;
+    }
+    svg {
+        margin-left: -10px;
+    }
+    .MathJax {
+        font-size: 14px !important;
+        padding: 20px;
+    }
+}

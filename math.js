@@ -1,16 +1,13 @@
 az.style_page({
     "padding" : "0px",
     "margin" : "0px",
-    "-webkit-user-select:": "none",
-	"-moz-user-select": "none",
-	"-ms-user-select": "none",
-	"-o-user-select": "none",
-	"user-select": "none"
+    "background" : "#d1ccc0"
 })
 
 az.style_body({
     "padding" : "0px",
-    "margin" : "0px"
+    "margin" : "0px",
+    "background" : "#d1ccc0"
 })
 
 az.add_sections({
@@ -19,7 +16,7 @@ az.add_sections({
 })
 
 az.style_sections("my_section", 1, {
-    "height": "100vh",
+    "height": "auto",
     "width" : "100vw",
     "background" : "#d1ccc0"
 })
@@ -47,19 +44,17 @@ az.all_style_layout("my_layout_cells", {
 az.add_slider("my_layout_cells", 2, {
     "this_class" : "my_slider",
     "min_value" : 0,
-    "max_value" : 1000000,
-    "default_value" : 0
+    "max_value" : 10000,
+    "default_value" : 0,
+    "text_class" : "show_value"
 })
 
 az.style_slider("my_slider", 1, {
-    "width" : "70%",
+    "width" : "90%",
     "outline" : 0,
     "color" : "black",
-    "-webkit-user-select:": "none",
-	"-moz-user-select": "none",
-	"-ms-user-select": "none",
-	"-o-user-select": "none",
-	"user-select": "none"
+    "margin-bottom" : "20px",
+    "margin-top" : "-20px"
 })
 
 az.add_html("my_layout_cells", 3, {
@@ -96,9 +91,28 @@ az.add_event("my_slider", 1, {
 
         var data = [trace];
 
-        var config = {responsive: true}
+        var config = {
+                responsive: true,
+                displayModeBar: false
+            }
 
-        layout = {width: 1000}
+        if(!az.check_for_mobile()) {
+            var use_width = 1000;
+        } else {
+            var use_width = 350;
+        }
+        layout = {
+            width: use_width,
+            plot_bgcolor: "transparent",
+            paper_bgcolor: "transparent",
+            margin: {
+                l: 30,
+                r: 30,
+                b: 30,
+                t: 30,
+                pad: 0
+            }
+        }
 
         Plotly.newPlot("hold_plot", data, layout, config);
         
