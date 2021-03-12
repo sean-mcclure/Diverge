@@ -21,7 +21,7 @@ az.add_sections({
 az.style_sections("my_section", 1, {
     "height": "100vh",
     "width" : "100vw",
-    "background" : "#218c74"
+    "background" : "#d1ccc0"
 })
 
 az.add_layout("my_section", 1, {
@@ -52,7 +52,13 @@ az.add_slider("my_layout_cells", 2, {
 })
 
 az.style_slider("my_slider", 1, {
-    "width" : "70%"
+    "width" : "70%",
+    "outline" : 0,
+    "-webkit-user-select:": "none",
+	"-moz-user-select": "none",
+	"-ms-user-select": "none",
+	"-o-user-select": "none",
+	"user-select": "none"
 })
 
 az.add_html("my_layout_cells", 3, {
@@ -63,13 +69,18 @@ az.add_event("my_slider", 1, {
     "type" : "as_change",
     "function" : function() {
         const slider_value = Number(az.grab_value("my_slider", 1));
-        var res = []
+        var res = [];
+        var sum = 0;
+         
         az.call_multiple({
             "iterations" : slider_value,
             "function" : function(dummy, index) {
-                res.push(index / ((index * Math.sqrt(index + 1)) + ((index + 1) * Math.sqrt(i))))
+                var index = index + 1;
+                sum += (index / ((index * Math.sqrt(index + 1)) + ((index + 1) * Math.sqrt(index))))
+                res.push(sum)
             }
         })
+
         var trace = {
         x: az.create_array(1, slider_value),
         y: res,
@@ -83,5 +94,6 @@ az.add_event("my_slider", 1, {
         layout = {width: 1000}
 
         Plotly.newPlot("hold_plot", data, layout, config);
+        
     }
 })
